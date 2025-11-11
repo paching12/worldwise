@@ -4,8 +4,10 @@ import { Spinner } from "../Spinner";
 import { Message } from "../Message";
 import type { CountryListProps } from "./CountryList.types";
 import CountryItem from "../CountryItem/CountryItem";
+import { useCities } from "../../contexts/CitiesContext";
 
-const CountryList: FC<CountryListProps> = ({ cities, isLoading }) => {
+const CountryList: FC<CountryListProps> = () => {
+  const { cities, isLoading } = useCities();
   if (isLoading) return <Spinner />;
 
   if (!cities.length) {
