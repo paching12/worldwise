@@ -8,9 +8,11 @@ type contextTypeValue = {
   currentCity?: City;
   setCurrentCity: (city: City) => void;
   getCity: (id: string) => void;
+  createCity: (city: City) => void;
 };
 
 const CitiesContext = createContext<contextTypeValue>({
+  createCity: () => {},
   isLoading: false,
   cities: [],
   currentCity: undefined,
@@ -23,7 +25,7 @@ type CitiesContextProvider = {
 };
 
 const CitiesProvider: FC<CitiesContextProvider> = ({ children }) => {
-  const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState<City[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentCity, setCurrentCity] = useState<City | undefined>(undefined);
 
@@ -57,6 +59,35 @@ const CitiesProvider: FC<CitiesContextProvider> = ({ children }) => {
     }
   }
 
+  const createCity = async (newCity: Omit<City, "id"> & { id?: string }) => {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${URL}/cities`, {
+        method: "POST",
+        body: JSON.stringify(newCity),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data: City = await res.json();
+      console.log("post data", data);
+
+      setCities((cities: City[]) => [...cities, data]);
+    } catch (err: unknown) {
+      console.error(err);
+      // const message =
+      //   err instanceof Error
+      //     ? err.message
+      //     : typeof err === "string"
+      //     ? err
+      //     : "Unknown error";
+      // setGeocodeError(message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <CitiesContext.Provider
       value={{
@@ -65,6 +96,7 @@ const CitiesProvider: FC<CitiesContextProvider> = ({ children }) => {
         currentCity,
         setCurrentCity,
         getCity,
+        createCity,
       }}
     >
       {children}

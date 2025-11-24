@@ -10,7 +10,6 @@ import { BackButton } from "../BackButton";
 const City: FC<CityProps> = () => {
   const { id } = useParams();
   const { getCity, currentCity, isLoading } = useCities();
-
   useEffect(() => {
     getCity(id || "");
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -29,9 +28,7 @@ const City: FC<CityProps> = () => {
 
       <div className={styles.row}>
         <h6>You went to {currentCity?.cityName} on</h6>
-        <p>
-          {formatDate(currentCity?.date || new Date().getDate().toString())}
-        </p>
+        <p>{formatDate(currentCity?.date || new Date().toISOString())}</p>
       </div>
 
       {currentCity?.notes && (

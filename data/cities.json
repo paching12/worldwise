@@ -10,7 +10,7 @@
         "lat": 38.727881642324164,
         "lng": -9.140900099907554
       },
-      "id": 73930385
+      "id": "73930385"
     },
     {
       "cityName": "Madrid",
@@ -22,7 +22,7 @@
         "lat": 40.46635901755316,
         "lng": -3.7133789062500004
       },
-      "id": 17806751
+      "id": "17806751"
     },
     {
       "cityName": "Berlin",
@@ -34,7 +34,67 @@
         "lat": 52.53586782505711,
         "lng": 13.376933665713324
       },
-      "id": 98443197
+      "id": "98443197"
+    },
+    {
+      "id": "1763524509334",
+      "cityName": "Rehlingen-Siersburg",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2025-11-04T00:00:00.000Z",
+      "notes": "hello",
+      "position": {
+        "lat": 49.379472574069794,
+        "lng": 6.596772485688024
+      }
+    },
+    {
+      "id": "1763524720749",
+      "cityName": "Sant Julia de Loria",
+      "country": "Andorra",
+      "emoji": "🇦🇩",
+      "date": "2025-11-13T00:00:00.000Z",
+      "notes": "Chistorra, Pedorra",
+      "position": {
+        "lat": 42.43942444096973,
+        "lng": 1.5292251443779261
+      }
+    },
+    {
+      "id": "1764016613318",
+      "cityName": "Metro Vancouver Regional District",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2025-10-28T00:00:00.000Z",
+      "notes": "VaNCOUVER",
+      "position": {
+        "lat": 49.260303287960234,
+        "lng": -123.11730465271434
+      }
+    },
+    {
+      "id": "1764017001377",
+      "cityName": "Victoria",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2025-11-02T00:00:00.000Z",
+      "notes": "Victoria",
+      "position": {
+        "lat": 48.427708288582956,
+        "lng": -123.36562398432086
+      }
+    },
+    {
+      "id": "1764017689349",
+      "cityName": "Metro Vancouver Regional District",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2023-04-07T00:00:00.000Z",
+      "notes": "My first foreign travel alone",
+      "position": {
+        "lat": 49.211117632405625,
+        "lng": -122.94434032385256
+      }
     }
   ]
 }
