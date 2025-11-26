@@ -1,6 +1,5 @@
 import {
   createContext,
-  useState,
   useEffect,
   type FC,
   useContext,
@@ -26,7 +25,7 @@ const CitiesContext = createContext<contextTypeValue>({
 });
 
 const CitiesProvider: FC<CitiesContextProvider> = ({ children }) => {
-  const [{ cities, isLoading, currentCity }, dispatch] = useReducer(
+  const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
     CityReducer,
     initialState
   );
@@ -58,6 +57,7 @@ const CitiesProvider: FC<CitiesContextProvider> = ({ children }) => {
   }, []);
 
   async function getCity(id: string) {
+    if (id === currentCity?.id) return;
     dispatch({
       type: ActionPayloadTypes.LOAD_CITY,
       payload: undefined,
@@ -144,6 +144,7 @@ const CitiesProvider: FC<CitiesContextProvider> = ({ children }) => {
         getCity,
         createCity,
         deleteCity,
+        error,
       }}
     >
       {children}
