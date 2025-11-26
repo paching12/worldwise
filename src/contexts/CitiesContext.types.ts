@@ -7,6 +7,7 @@ export type contextTypeValue = {
   getCity: (id: string) => void;
   createCity: (city: City) => void;
   deleteCity: (id: string) => void;
+  error?: string;
 };
 
 export type CitiesContextProvider = {

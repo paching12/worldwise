@@ -35,6 +35,7 @@ export const CityReducer = (state: CityStateType, action: ActionReducer) => {
         ...state,
         isLoading: false,
         cities: state.cities.filter((item) => item.id != action.payload),
+        currentCity: undefined,
       };
     case ActionPayloadTypes.CREATE_CITY:
       return {
