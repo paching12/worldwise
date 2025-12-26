@@ -48,10 +48,8 @@ export default function Login() {
         <div>
           <Button
             type={BUTTON_TYPES.PRIMARY}
-            onClick={(e?: React.MouseEvent<HTMLButtonElement>) => {
-              e?.preventDefault();
-              // navigate("/");
-            }}
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            onClick={() => {}}
           >
             <>Login</>
           </Button>

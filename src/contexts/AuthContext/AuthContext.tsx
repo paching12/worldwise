@@ -34,7 +34,12 @@ const AuthProvider: FC<AuthContextProps> = ({ children }) => {
         },
       });
   };
-  const logout = () => {};
+  const logout = () => {
+    dispatch({
+      type: AUTH_ACTIONS.LOGOUT,
+      payload: undefined,
+    });
+  };
   return (
     <AuthContext.Provider
       value={{
