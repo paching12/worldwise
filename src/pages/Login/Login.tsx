@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import styles from "./Login.module.css";
 import { useAuth } from "@contexts";
 import { useNavigate } from "react-router-dom";
+import { Button, BUTTON_TYPES } from "@components/Button";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
@@ -45,7 +46,15 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <Button
+            type={BUTTON_TYPES.PRIMARY}
+            onClick={(e?: React.MouseEvent<HTMLButtonElement>) => {
+              e?.preventDefault();
+              // navigate("/");
+            }}
+          >
+            <>Login</>
+          </Button>
         </div>
       </form>
     </main>
