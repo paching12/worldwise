@@ -1,6 +1,6 @@
 export type City = {
   country: string;
-  emoji: string;
+  countryCode: string;
   cityName: string;
   date: string;
   notes: string;

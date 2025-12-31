@@ -1,6 +1,6 @@
 export type CountryItemProps = {
   country: {
-    emoji: string;
+    countryCode: string;
     country: string;
   };
 };

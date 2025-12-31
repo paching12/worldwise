@@ -32,7 +32,7 @@ function Form() {
   const [countryName, setCountryName] = useState("");
   const [date, setDate] = useState<Date | null>(null);
   const [notes, setNotes] = useState("");
-  const [emoji, setEmoji] = useState("");
+  const [countryCode, setCountryCode] = useState("");
   const [geocodeError, setGeocodeError] = useState<string>("");
 
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ function Form() {
         console.log("data", data);
         setCityName(data.city || data.locallity || "");
         setCountryName(data.countryName);
-        setEmoji(convertToEmoji(data.countryCode));
+        setCountryCode(data.countryCode);
         setGeocodeError("");
       } catch (err: unknown) {
         console.error(err);
@@ -90,7 +90,7 @@ function Form() {
       id: Date.now().toString(),
       cityName,
       country: countryName,
-      emoji,
+      countryCode,
       date: date.toISOString(),
       notes,
       position: {
@@ -116,7 +116,9 @@ function Form() {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        <span className={styles.flag}>{emoji}</span>
+        <div className={styles.flag}>
+          <span className={`fi fi-${countryCode?.toLowerCase()} `}></span>
+        </div>
       </div>
 
       <div className={styles.row}>
@@ -134,6 +136,7 @@ function Form() {
           selected={date}
           onChange={(selectedDate) => setDate(selectedDate)}
           dateFormat="dd/MM/yyyy"
+          autoComplete="off"
         />
       </div>
 

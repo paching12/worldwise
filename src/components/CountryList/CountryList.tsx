@@ -20,15 +20,16 @@ const CountryList: FC<CountryListProps> = () => {
     ...new Set(
       cities.map((city) => ({
         country: city.country,
-        emoji: city.emoji,
+        countryCode: city.countryCode.toLowerCase(),
+        id: city.id,
       }))
     ),
   ];
 
   return (
     <ul className={styles.countryList}>
-      {countries.map((country, index) => (
-        <CountryItem country={country} key={`country-${index}`} />
+      {countries.map((country) => (
+        <CountryItem country={country} key={`country-${country.id}`} />
       ))}
     </ul>
   );
