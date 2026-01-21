@@ -12,8 +12,7 @@ const City: FC<CityProps> = () => {
   const { getCity, currentCity, isLoading } = useCities();
   useEffect(() => {
     getCity(id || "");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, getCity]);
 
   if (isLoading) return <Spinner />;
 
@@ -22,7 +21,10 @@ const City: FC<CityProps> = () => {
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{currentCity?.emoji}</span> {currentCity?.cityName}
+          <span
+            className={`fi fi-${currentCity?.countryCode?.toLowerCase()} `}
+          ></span>
+          {currentCity?.cityName}
         </h3>
       </div>
 

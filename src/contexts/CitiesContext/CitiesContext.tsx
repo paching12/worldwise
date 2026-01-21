@@ -4,6 +4,7 @@ import {
   type FC,
   useContext,
   useReducer,
+  useCallback,
 } from "react";
 import type {
   CitiesContextProvider,
@@ -30,7 +31,7 @@ const CitiesContext = createContext<ContextTypeValue>({
 const CitiesProvider: FC<CitiesContextProvider> = ({ children }) => {
   const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
     CityReducer,
-    initialState
+    initialState,
   );
 
   useEffect(() => {
@@ -59,28 +60,30 @@ const CitiesProvider: FC<CitiesContextProvider> = ({ children }) => {
     fetchCities();
   }, []);
 
-  async function getCity(id: string) {
-    if (id === currentCity?.id) return;
-    dispatch({
-      type: ActionPayloadTypes.LOAD_CITY,
-      payload: undefined,
-    });
-
-    try {
-      const res = await fetch(`${URL}/cities/${id}`);
-      const data = await res.json();
-
+  const getCity = useCallback(
+    async function getCity(id: string) {
+      if (id === currentCity?.id) return;
       dispatch({
-        type: ActionPayloadTypes.LOADED_CITY,
-        payload: data,
+        type: ActionPayloadTypes.LOAD_CITY,
+        payload: undefined,
       });
-    } catch {
-      dispatch({
-        type: ActionPayloadTypes.REJECTED_CITY,
-        payload: "There was an error loading data",
-      });
-    }
-  }
+
+      try {
+        const res = await fetch(`${URL}/cities/${id}`);
+        const data = await res.json();
+        dispatch({
+          type: ActionPayloadTypes.LOADED_CITY,
+          payload: data,
+        });
+      } catch {
+        dispatch({
+          type: ActionPayloadTypes.REJECTED_CITY,
+          payload: "There was an error loading data",
+        });
+      }
+    },
+    [currentCity?.id],
+  );
 
   const createCity = async (newCity: Omit<City, "id"> & { id?: string }) => {
     dispatch({

@@ -50,10 +50,9 @@ function Form() {
 
         if (!data.countryCode) {
           throw new Error(
-            "It does not seem to be a cit. Click somewhere else 😔"
+            "It does not seem to be a cit. Click somewhere else 😔",
           );
         }
-        console.log("data", data);
         setCityName(data.city || data.locallity || "");
         setCountryName(data.countryName);
         setCountryCode(data.countryCode);
@@ -64,8 +63,8 @@ function Form() {
           err instanceof Error
             ? err.message
             : typeof err === "string"
-            ? err
-            : "Unknown error";
+              ? err
+              : "Unknown error";
         setGeocodeError(message);
       } finally {
         setIsLoadingGeocoding(false);
