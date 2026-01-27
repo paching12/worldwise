@@ -1,11 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-// import Product from "./pages/Product";
-// import Pricing from "./pages/Pricing";
-// import { Homepage } from "./pages/Homepage";
-// import { PageNotFound } from "./pages/PageNotFound";
-// import { AppLayout } from "./pages/AppLayout";
-// import Login from "./pages/Login/Login";
+
 const Homepage = lazy(() => import("./pages/Homepage/Homepage"));
 const Pricing = lazy(() => import("./pages/Pricing/Pricing"));
 const Product = lazy(() => import("./pages/Product/Product"));
