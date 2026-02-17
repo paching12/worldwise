@@ -11,6 +11,34 @@ A modern web application for travelers to track and visualize the countries they
 - 🔐 User authentication for personalized travel logs
 - 📊 Track your travel statistics
 
+## Deployment to GitHub Pages
+
+This project is configured to automatically deploy to GitHub Pages when you push to the `main` branch.
+
+### Setup
+
+1. Make sure your repository is public or has GitHub Pages enabled in settings
+2. In your repository settings, go to **Settings > Pages**
+3. Select **Deploy from a branch**
+4. Choose `gh-pages` as the branch and `/root` as the folder
+
+### How it Works
+
+- A GitHub Actions workflow automatically builds and deploys your project on every push to `main`
+- The workflow runs `npm run build` and deploys the `dist` folder to the `gh-pages` branch
+- Your site will be available at: `https://<your-github-username>.github.io/worldwise/`
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+
+```bash
+npm run build
+npm run deploy
+```
+
+> Note: You may need to install `gh-pages` package to use the deploy script
+
 ## Technologies & Libraries
 
 ### Core Framework
@@ -90,7 +118,7 @@ The application will be available at `http://localhost:5173`
 ### Build for Production
 
 ```bash
-npm run build
+`npm run build`
 ```
 
 ### Run Linting
@@ -98,3 +126,4 @@ npm run build
 ```bash
 npm run lint
 ```
+
