@@ -1,8 +1,8 @@
 import type { City } from "../types/City";
 import citiesData from "../../../data/cities.json";
 
-const isDevelopment = import.meta.env.DEV;
-const API_URL = "http://localhost:8001";
+// const isDevelopment = import.meta.env.DEV;
+// const API_URL = "http://localhost:8001";
 const STORAGE_KEY = "worldwise_cities";
 
 // Inicializar localStorage con datos si está vacío
